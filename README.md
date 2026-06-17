@@ -1,106 +1,238 @@
-<h1 align="center">Dynamic SVG Vector Graphics Editor 🎨</h1>
+<h1 align="center">Dynamic SVG Vector Graphics Editor</h1>
 
 <div align="center">
-  <p><strong>A high-performance, frontend-only vector asset creation studio.</strong></p>
-  <p><em>Developed for ITM Skills University Case Study #153</em></p>
-  
+  <p><strong>A browser-native vector graphics editor built with React 18, Vite, and Zustand.</strong></p>
+  <p>No backend. No server. Runs entirely in the browser.</p>
+
+  <a href="https://adityac17.github.io/Dynamic-SVG-Vector-Graphics-Editor-v1/">
+    <img src="https://img.shields.io/badge/Live_Demo-Visit_Site-brightgreen?style=for-the-badge" alt="Live Demo" />
+  </a>
+  &nbsp;
   [![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
   [![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
   [![Zustand](https://img.shields.io/badge/Zustand-443E38?style=for-the-badge&logo=react&logoColor=white)](https://github.com/pmndrs/zustand)
 </div>
 
-## 📝 Overview
+---
 
-A complete frontend-only vector graphics editor running entirely in the browser. No backend, no database—all coordinate math, path compilation, and XML serialization are handled locally. Built with React 18, Vite, and Zustand for fluid 60fps drag mutations and state management.
+## Live Demo
 
-## ✨ Features
+**[https://adityac17.github.io/Dynamic-SVG-Vector-Graphics-Editor-v1/](https://adityac17.github.io/Dynamic-SVG-Vector-Graphics-Editor-v1/)**
 
-### 🛠 Core Capabilities
-- **Local Browser Execution:** Fully frontend architecture with zero server dependencies.
-- **Persistent State:** Auto-saves your workspace to `localStorage` via Zustand persist middleware.
-- **Advanced Exporting:** Production-ready XML serializer for SVG downloads, plus native in-browser rasterization for PNG exports.
-- **Live Telemetry HUD:** Real-time monitoring of layer counts, anchor nodes, parse latency, cache size, and chronological event logging.
+---
 
-### 🚀 Pro & Productivity Tools
-- **Advanced Editing:** - Bezier curve manipulation and freehand pencil capturing.
-  - Multi-select, real grouping (`<g>`), and rotation (0–359° pivot support).
-- **Alignment & Distribution:** Left, Center, Right, Top, Bottom alignments and precise distribution.
-- **Layer Management:** Lock, hide, and manage Z-order (Bring Front / Send Back) per layer.
-- **Workflow Enhancers:** - Undo/Redo history stack.
-  - Snap-to-grid, arrow-key nudging (1px or 10px with `Shift`), and object duplication.
-  - Color swatch memory for one-click reapplications.
-- **SVG Import:** Parses existing `<rect>`, `<circle>`, `<ellipse>`, `<line>`, `<polyline>`, `<polygon>`, and `<path>` nodes into editable layers.
+## Project Description
 
-## 💻 Tech Stack & Architecture
+A complete, production-quality SVG vector graphics editor that runs entirely in the browser as a React single-page application. Users can draw rectangles, circles, Bezier pen paths, and freehand strokes on an interactive SVG canvas. Every shape is stored in a Zustand state store with localStorage persistence — work survives page refresh.
 
-- **Framework:** React 18 & Vite
-- **State Management:** Zustand (with `persist` middleware)
-- **Math/Geometry:** Custom Cartesian Screen-to-SVG Matrix Translator `(P − Offset)/Scale` and Bezier Curve Parameter Generators.
+The editor covers the full spectrum from low-level graphics math (screen-to-SVG coordinate transforms, Bezier curve generation, rotation pivot arithmetic) to high-level UX features (undo/redo, grouping, layer management, file import/export) — all from first principles, with no graphics library dependency.
 
-## 📂 Implementation Map
+Built for **ITM Skills University Case Study #153 — Dynamic SVG Vector Graphics Editor**.
 
-| System / Component | Location |
-| :--- | :--- |
-| **In-Memory Ledger** (ordered layer array) | `src/store.js` |
-| **Session Memory** | `persist` middleware, `src/store.js` |
-| **Geometry & Paths** (Screen-to-SVG, Bezier) | `src/utils/geometry.js` |
-| **XML Serializer & Export** | `src/utils/serializer.js` |
-| **SVG Importer** | `src/utils/importer.js` |
-| **Canvas & Interaction** | `src/components/CanvasStage.jsx` <br> `src/components/InteractiveSvgWorkspace.jsx` |
-| **Tooling & Forms** | `src/components/DrawingToolActionBar.jsx` <br> `src/components/VectorPropertyInspectorForm.jsx` |
-| **Telemetry & Outputs** | `src/components/XmlTelemetryHUD.jsx` <br> `src/components/CompiledXmlCodeSnippet.jsx` |
+---
 
-## 🚀 Quick Start
+## Screenshots
 
-1. **Clone the repository**
-```bash
-   git clone [https://github.com/Adityac17/Dynamic-SVG-Vector-Graphics-Editor.git](https://github.com/Adityac17/Dynamic-SVG-Vector-Graphics-Editor.git)
-   cd Dynamic-SVG-Vector-Graphics-Editor
-Install dependencies
+> Draw shapes, edit properties, export SVG/PNG — all in the browser.
+
 ```
-Bash
-   npm install
-Start the development server
+┌─────────────────────────────────────────────────────────────────────┐
+│  Editor Console  │           SVG Canvas                             │
+│  ─────────────   │  ┌──────────────────────────────────────────┐   │
+│  Tools:          │  │                                          │   │
+│  ◻ Rect          │  │   [rect]  [circle]  [path]               │   │
+│  ○ Circle        │  │      ↑ drag to move/resize               │   │
+│  ✏ Pen           │  │                                          │   │
+│  ✒ Pencil        │  └──────────────────────────────────────────┘   │
+│                  │                                                   │
+│  Property        │  ┌──────────────────────────────────────────┐   │
+│  Inspector:      │  │  <svg xmlns="http://www.w3.org/2000/svg">│   │
+│  X / Y / W / H  │  │    <rect x="50" y="40" .../>             │   │
+│  Fill  Stroke    │  │  </svg>          [Copy] [SVG] [PNG]      │   │
+│  [Group] [Del]   │  └──────────────────────────────────────────┘   │
+│                  │                                                   │
+│  Layer List:     │  Telemetry: 3 layers · 8 anchors · 2ms latency  │
+│  ● rect          │                                                   │
+│  ● circle        │                                                   │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
-Bash
-   npm run dev      # Server runs on http://localhost:3000
-Build for production
+---
 
-Bash
-   npm run build
+## Features
 
-   
-🎯 Usage Guide
-Select a Tool: Use the toolbar to drop a Rect or Circle. Use the Pen Bezier to lay anchor points and click Finish Path. Use the Freehand Pencil to drag and draw.
+### Drawing Tools
+- **Rectangle** — click-drag to place, resize via corner handles
+- **Circle** — click-drag to place, resize via radius handle
+- **Pen (Bezier)** — click to lay anchor points, drag handles to curve; press `Esc` or "Finish Path" to commit
+- **Freehand Pencil** — drag to draw free-form strokes captured as smooth paths
 
-Transformations: Drag shapes to move them. Drag white handles to resize. For paths, manipulate anchor nodes or blue control handles to flex curves. Use Shift + Click to multi-select.
+### Shape Editing
+- Drag to move; resize handles per shape type
+- **Rotation handle** — orange dot arm above shape, drag to rotate around bbox center
+- **Bezier control handles** — blue handles on path anchors for curve manipulation
+- Multi-select via `Shift+Click`; move all selected together
 
-Property Inspector: Edit geometric parameters, colors, and opacity directly.
+### Property Inspector
+- X / Y coordinates, Width / Height (rect), Center X/Y/Radius (circle)
+- Fill color picker, Stroke color picker, Stroke weight
+- Opacity slider, Rotation slider (0–359°)
+- Recent color swatches for one-click re-apply
 
-Grouping: Use Group Selected to bundle shapes into a single <g> tag. Selecting any member selects the entire group.
+### Layer Management
+- Layer hierarchy list — reverse Z-order (top layer = top of list)
+- Raise / Lower layer (↑ / ↓)
+- Show / Hide toggle per layer (●/◌)
+- Lock layer (prevents editing)
+- Group selected shapes into `<g>` / Ungroup
+- Bring to Front / Send to Back
+- Duplicate selection
+- Delete layer
 
-Exporting: Access the bottom HUD to copy the compiled XML, Download as an SVG, or Download as a rendered PNG.
+### Align & Distribute
+- Align: Left, Center H, Right, Top, Center V, Bottom
+- Distribute: Horizontal, Vertical (requires ≥ 3 selected)
 
-## ⌨️ Keyboard Shortcuts
-Shortcut	Action
-V	Select Tool
-R	Rectangle Tool
-C	Circle Tool
-P	Pen Tool
-B	Pencil Tool
-Ctrl/Cmd + Z	Undo
-Ctrl/Cmd + Shift + Z / Ctrl + Y	Redo
-Ctrl/Cmd + D	Duplicate Selection
-Ctrl/Cmd + A	Select All
-Arrow Keys	Nudge Selection (Hold Shift for 10x speed)
-Delete / Backspace	Delete Selection
-Esc	Finish Path / Deselect All
+### Canvas Controls
+- Zoom In / Out / Reset
+- Pan (arrow buttons or keyboard)
+- Snap-to-Grid toggle — rounds coordinates to nearest grid step
+- Import SVG file — parses `<rect>`, `<circle>`, `<ellipse>`, `<line>`, `<polyline>`, `<polygon>`, `<path>` into editable layers
+- Clear All
 
-## 👨‍💻 Author
-Aditya Sunil Chouksey
+### Export
+- **Copy XML** — copies full SVG markup to clipboard
+- **Download SVG** — saves as `.svg` file
+- **Download PNG** — rasterizes to PNG via offscreen canvas (no server needed)
 
-SAM ALTMAN
+### Undo / Redo
+- 100-step history via snapshot stacks
+- `Ctrl/Cmd+Z` undo, `Ctrl/Cmd+Shift+Z` / `Ctrl+Y` redo
 
-B.Tech CSE
+### Session Persistence
+- Auto-saves to `localStorage` on every change via Zustand persist middleware
+- Workspace survives page refresh
 
-ITM Skills University 
+### Live Telemetry HUD
+- Shape layer count, anchor node count, parse latency (ms), XML byte size, cache size
+- Reverse-chronological event log
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| UI Framework | React 18 (Concurrent Mode, StrictMode) |
+| Build Tool | Vite 5 |
+| State Management | Zustand 4 with `persist` middleware |
+| Language | JavaScript ES2022 (modules) |
+| Styling | Plain CSS, CSS Grid layout |
+| Export | Clipboard API, Blob + `URL.createObjectURL`, HTML5 Canvas |
+| Import | `FileReader` API + `DOMParser` |
+| Persistence | `localStorage` |
+| Deployment | GitHub Pages via GitHub Actions |
+
+---
+
+## Project Structure
+
+```
+src/
+├── App.jsx                          # Root — keyboard shortcuts, global layout
+├── store.js                         # Zustand store — all state + actions
+├── index.css                        # Global styles (Times New Roman 12pt)
+├── main.jsx                         # React 18 concurrent root
+├── components/
+│   ├── CanvasStage.jsx              # Top toolbar: undo/redo, zoom, snap, import
+│   ├── InteractiveSvgWorkspace.jsx  # SVG canvas — pointer events, rendering
+│   ├── EditorConsole.jsx            # Left panel — tools + inspector + layers
+│   ├── DrawingToolActionBar.jsx     # Tool selector buttons
+│   ├── VectorPropertyInspectorForm.jsx  # Shape properties panel
+│   ├── CompiledXmlCodeSnippet.jsx   # Live XML output + export buttons
+│   └── XmlTelemetryHUD.jsx         # Metrics HUD + event log
+└── utils/
+    ├── geometry.js                  # screenToSvg, buildPathData, shapeBBox
+    ├── serializer.js                # SVG/PNG export, XML generation
+    └── importer.js                  # SVG file parser (DOMParser)
+```
+
+---
+
+## Setup Instructions
+
+### Prerequisites
+
+- **Node.js** v18 or higher — [nodejs.org](https://nodejs.org)
+- **npm** v9 or higher (comes with Node)
+- **Git**
+
+### 1. Clone
+
+```bash
+git clone https://github.com/Adityac17/Dynamic-SVG-Vector-Graphics-Editor-v1.git
+cd Dynamic-SVG-Vector-Graphics-Editor-v1
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start development server
+
+```bash
+npm run dev
+```
+
+Opens at **http://localhost:3000** with hot module reload.
+
+### 4. Build for production
+
+```bash
+npm run build
+```
+
+Output goes to `dist/`. Preview the production build:
+
+```bash
+npm run preview
+```
+
+### 5. Deploy to GitHub Pages (optional)
+
+The repo includes a GitHub Actions workflow at `.github/workflows/deploy.yml`.
+
+Enable Pages in your repo:
+1. Go to **Settings → Pages**
+2. Set **Source** to **GitHub Actions**
+3. Push to `main` — the workflow builds and deploys automatically.
+
+---
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `V` | Select tool |
+| `R` | Rectangle tool |
+| `C` | Circle tool |
+| `P` | Pen (Bezier) tool |
+| `B` | Pencil (freehand) tool |
+| `Ctrl/Cmd + Z` | Undo |
+| `Ctrl/Cmd + Shift + Z` / `Ctrl + Y` | Redo |
+| `Ctrl/Cmd + D` | Duplicate selection |
+| `Ctrl/Cmd + A` | Select all |
+| `Arrow keys` | Nudge selection 1px |
+| `Shift + Arrow keys` | Nudge selection 10px |
+| `Delete` / `Backspace` | Delete selection |
+| `Esc` | Finish path / deselect all |
+
+---
+
+## Author
+
+**Aditya Sunil Chouksey**  
+B.Tech CSE — ITM Skills University  
+GitHub: [@Adityac17](https://github.com/Adityac17)
