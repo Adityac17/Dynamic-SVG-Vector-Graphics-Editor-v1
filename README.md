@@ -7,7 +7,7 @@
   <a href="https://adityac17.github.io/Dynamic-SVG-Vector-Graphics-Editor-v1/">
     <img src="https://img.shields.io/badge/Live_Demo-Visit_Site-brightgreen?style=for-the-badge" alt="Live Demo" />
   </a>
-  &nbsp;
+  
   [![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
   [![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
   [![Zustand](https://img.shields.io/badge/Zustand-443E38?style=for-the-badge&logo=react&logoColor=white)](https://github.com/pmndrs/zustand)
