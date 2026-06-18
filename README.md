@@ -38,22 +38,22 @@ Built for **ITM Skills University Case Study #153 — Dynamic SVG Vector Graphic
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │  Editor Console  │           SVG Canvas                             │
-│  ─────────────   │  ┌──────────────────────────────────────────┐   │
-│  Tools:          │  │                                          │   │
-│  ◻ Rect          │  │   [rect]  [circle]  [path]               │   │
-│  ○ Circle        │  │      ↑ drag to move/resize               │   │
-│  ✏ Pen           │  │                                          │   │
-│  ✒ Pencil        │  └──────────────────────────────────────────┘   │
-│                  │                                                   │
-│  Property        │  ┌──────────────────────────────────────────┐   │
-│  Inspector:      │  │  <svg xmlns="http://www.w3.org/2000/svg">│   │
-│  X / Y / W / H  │  │    <rect x="50" y="40" .../>             │   │
-│  Fill  Stroke    │  │  </svg>          [Copy] [SVG] [PNG]      │   │
-│  [Group] [Del]   │  └──────────────────────────────────────────┘   │
-│                  │                                                   │
-│  Layer List:     │  Telemetry: 3 layers · 8 anchors · 2ms latency  │
-│  ● rect          │                                                   │
-│  ● circle        │                                                   │
+│  ─────────────   │  ┌──────────────────────────────────────────┐    │
+│  Tools:          │  │                                          │    │
+│  ◻ Rect          │  │   [rect]  [circle]  [path]               │    │
+│  ○ Circle        │  │      ↑ drag to move/resize               │    │
+│  ✏ Pen           │  │                                          │    │ 
+│  ✒ Pencil        │  └──────────────────────────────────────────┘    │
+│                  │                                                  │ 
+│  Property        │  ┌──────────────────────────────────────────┐    │
+│  Inspector:      │  │  <svg xmlns="http://www.w3.org/2000/svg">│    │
+│  X / Y / W / H   │  │    <rect x="50" y="40" .../>             │    │
+│  Fill  Stroke    │  │  </svg>          [Copy] [SVG] [PNG]      │    │
+│  [Group] [Del]   │  └──────────────────────────────────────────┘    │
+│                  │                                                  │
+│  Layer List:     │  Telemetry: 3 layers · 8 anchors · 2ms latency   │
+│  ● rect          │                                                  │
+│  ● circle        │                                                  │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
