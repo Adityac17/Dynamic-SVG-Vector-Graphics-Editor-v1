@@ -35,27 +35,8 @@ Built for **ITM Skills University Case Study #153 — Dynamic SVG Vector Graphic
 
 > Draw shapes, edit properties, export SVG/PNG — all in the browser.
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│  Editor Console  │           SVG Canvas                             │
-│  ─────────────   │  ┌──────────────────────────────────────────┐    │
-│  Tools:          │  │                                          │    │
-│  ◻ Rect          │  │   [rect]  [circle]  [path]               │    │
-│  ○ Circle        │  │      ↑ drag to move/resize               │    │
-│  ✏ Pen           │  │                                          │    │ 
-│  ✒ Pencil        │  └──────────────────────────────────────────┘    │
-│                  │                                                  │ 
-│  Property        │  ┌──────────────────────────────────────────┐    │
-│  Inspector:      │  │  <svg xmlns="http://www.w3.org/2000/svg">│    │
-│  X / Y / W / H   │  │    <rect x="50" y="40" .../>             │    │
-│  Fill  Stroke    │  │  </svg>          [Copy] [SVG] [PNG]      │    │
-│  [Group] [Del]   │  └──────────────────────────────────────────┘    │
-│                  │                                                  │
-│  Layer List:     │  Telemetry: 3 layers · 8 anchors · 2ms latency   │
-│  ● rect          │                                                  │
-│  ● circle        │                                                  │
-└─────────────────────────────────────────────────────────────────────┘
-```
+<img width="1710" height="903" alt="Screenshot 2026-06-19 at 11 03 03" src="https://github.com/user-attachments/assets/ec1e96cc-4364-48eb-8a03-956d5a4b7a09" />
+
 
 ---
 
